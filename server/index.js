@@ -36,5 +36,5 @@ mongoose.connect(process.env.DB,ini).then(()=>{
     console.log("db connected");
     console.log(process.env.DU)
 })
-app.listen(9000,()=> console.log("port connected"))
+app.listen("https://fortport--mern.herokuapp.com/",()=> console.log("port connected"))
 
