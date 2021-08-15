@@ -1,24 +1,56 @@
-import logo from './logo.svg';
+
 import './App.css';
+import {BrowserRouter,Route,Switch} from "react-router-dom"
+import Home from './component/Home';
+import Login from "./component/Login"
+import Feedback from './component/Feedback';
+import Navbar from './component/Navbar';
+import {useSelector} from "react-redux"
+import Register from './component/Register';
 
 function App() {
+
+  let a = false;
+
+  const set = useSelector((state)=>state.user);
+
+  if(set!==null){
+    a = true
+  }else{
+    a = false
+  }
+
+
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+   <>
+   {!a ? (<BrowserRouter>
+   <Switch>
+     <Route exact path="/">
+       <Login/>
+
+     </Route>
+     <Route exact path="/reg">
+       <Register/>
+     </Route>
+   </Switch>
+   
+   </BrowserRouter>):(<BrowserRouter>
+   <Navbar/>
+   <Switch>
+     <Route  exact path="/">
+        <Home/>
+     </Route>
+     <Route  path="/feed" >
+       <Feedback/>
+     </Route>
+   </Switch>
+   
+   </BrowserRouter>
+)}
+   
+
+   </>
   );
 }
 
