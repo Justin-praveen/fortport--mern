@@ -10,7 +10,7 @@ const Register = () => {
        await sign.createUserWithEmailAndPassword(data.email,data.password).then((da)=>{
             const a = da.user;
             setreg(data);
-            axios.post("http://localhost:9000/reg/register",data).then(()=>console.log("osted"))
+            axios.post("https://fortport--mern.herokuapp.com/reg/register",data).then(()=>console.log("osted"))
             console.log(data);
             console.log(reg);
             console.log(a)

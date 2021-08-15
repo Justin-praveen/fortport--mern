@@ -3,13 +3,12 @@ const hu = require("./schema")
 
 const rout = express.Router();
 
-rout.get("/data",async(req,res)=>{
+rout.get("/data/:name",async(req,res)=>{
+
     
-    const em = req.body.email;
-  await hu.findOne({emails : em} , (er,doc)=>{
+    
+  await hu.findOne({email :req.params.name} , (er,doc)=>{
        res.json(doc)
-           
-    
     });
  
     

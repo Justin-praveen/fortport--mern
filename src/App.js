@@ -7,6 +7,7 @@ import Feedback from './component/Feedback';
 import Navbar from './component/Navbar';
 import {useSelector} from "react-redux"
 import Register from './component/Register';
+import Admin from "./component/Admin";
 
 function App() {
 
@@ -14,10 +15,10 @@ function App() {
 
   const set = useSelector((state)=>state.user);
 
-  if(set!==null){
-    a = true
-  }else{
+  if(set == null){
     a = false
+  }else{
+    a = true
   }
 
 
@@ -32,6 +33,14 @@ function App() {
      </Route>
      <Route exact path="/reg">
        <Register/>
+     </Route>
+   </Switch>
+   
+   </BrowserRouter>) :(set.data.isAdmin == true) ? (<BrowserRouter>
+   <Switch>
+     <Route path="/">
+       <Admin/>
+
      </Route>
    </Switch>
    

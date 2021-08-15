@@ -23,9 +23,7 @@ const Login = () => {
            const a = da.user;
            console.log(a);
             setusers(data);
-            const io = data.email
-            console.log(io)
-            axios.get("http://localhost:9000/reg/data",{email:io}).then((d)=>console.log(d))
+           
             
           
         console.log(users)
@@ -39,14 +37,15 @@ const Login = () => {
 
     useEffect(async() => {
         if(users!==null){
-            const e = users.email;
+            const e =  users.email
+            
             console.log(e);
-              const g = await axios.get("http://localhost:9000/reg/data",{email:e});
+              const g = await axios.get(`https://fortport--mern.herokuapp.com/reg/data/${e}`);
                dispatch({
                 type : "login",
                 use : g
             })
-                
+    
         }else{
             console.log("not yet posted");
         }
